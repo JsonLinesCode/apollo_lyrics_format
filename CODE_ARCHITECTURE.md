@@ -20,11 +20,11 @@ class "Album" {
 class "ProjectVersion" {
   +int? id
   +String name
-  +String content
+  +IsarLink<Content> content
   +DateTime creationDate
   +DateTime lastEdit
   +IsarLink<Artist> author
-  +IsarLinks<Artist> coauthors
+  +IsarLinks<Artist> coAuthors
   +TextSettings textSettings
   +IsarLink<ProjectMetronome> metronome
   +IsarLinks<Track> tracks
@@ -32,14 +32,13 @@ class "ProjectVersion" {
 
 
 "Project" o-- "ProjectVersion"
-"Project" o-- "Content"
+"ProjectVersion" o-- "Content"
 
 class "Project" {
   +int? id
   +String name
   +String content
-  +IsarLink<Content> content
-  +IsarLink<ProjectVersion checkedOutVersion
+  +IsarLink<ProjectVersion> checkedOutVersion
   +IsarLinks<ProjectVersion> versions
   +DateTime creationDate
   +DateTime lastEditedDate
